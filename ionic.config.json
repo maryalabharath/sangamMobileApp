@@ -1,5 +1,7 @@
 {
   "name": "kumarsangamapp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
