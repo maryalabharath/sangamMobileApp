@@ -18,114 +18,39 @@
       <ion-menu-button>
       </ion-menu-button>
     </ion-buttons>
-    <ion-title>ChitDetails</ion-title>
+    <ion-title>Chit Details</ion-title>
   </ion-toolbar>
   
 </ion-header>
 
 <ion-content padding="true">
- <ion-list>
-  <ion-item>
-    <ion-label position="floating"> Member Name </ion-label>
-    <ion-input type="text" id="membername" [(ngModel)]="loggedinUserDetails.firstname"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Group Name</ion-label>
-    <ion-select [(ngModel)]="selectedgroup" okText="Okay" cancelText="Dismiss" (ionChange)="optionsFn();">
-      <ion-select-option [value]="item" *ngFor="let item of memberchitdetailsArr" >
-          {{item.groupName}}
-      </ion-select-option>
-      <!-- <ion-select-option value="Group1">Group1</ion-select-option>
-      <ion-select-option value="Group2">Group2</ion-select-option>
-      <ion-select-option value="Group3">Group3</ion-select-option>
-      <ion-select-option value="Group4">Group4</ion-select-option> -->
-    </ion-select>
 
-    <!-- <ion-select [(ngModel)]="select" [required]="true" [name]="value">
-      <ion-option *ngFor="let optionObj of responseData.parentData">
-          {{ optionObj?.ProblemId] }} - {{ optionObj?.ProblemDesc }}
-      </ion-option>
-</ion-select> -->
-  </ion-item>
- </ion-list>
- <ion-button style="margin-left: 15px;margin-top: 10px;" (click)="getPaymentDetailsByGrpMember()">
-  Search
-</ion-button>
-<ion-grid class="grid-bordered">
-  <ion-row>
-    <ion-col>
-      <div>
-        BidAmount
-      </div>
-    </ion-col>
-    <ion-col>
-      <div>
-        Interest
-      </div>
-    </ion-col>
-    <ion-col>
-      <div>
-        Amount
-      </div>
-    </ion-col>
-    <ion-col>
-      <div>
-        PaidDate
-      </div>
-    </ion-col>
-  </ion-row>
-  <ion-row *ngFor="let row of paymentHistoryreponseArray,let i=index">
-    <ion-col>
-      <div>
-        {{row.bidamount}}
-      </div>
-    </ion-col>
-    <ion-col>
-      <div>
-        {{row.interestamount}}
-      </div>
-    </ion-col>
-    <ion-col>
-      <div>
-        {{row.paidamount}}
-      </div>
-    </ion-col>
-    <ion-col >
-      <div>
-        {{row.paiddate|date: 'yyyy-MM-dd'}}
-      </div>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+   <!-- <ion-card *ngFor="let item of memberchitdetailsArr" color="light" class="ion-text-center" (click)="getPaymentDetailsByGrpMember(item)" >
 
-<!-- <ion-row  >
-  <ion-col size="3">
-  BidAmount
-  </ion-col>
-  <ion-col size="3">
-  Interest
-  </ion-col>
-  <ion-col size="3">
-  Amount
-  </ion-col>
-  <ion-col size-sm="3">
-    PaidDate
-  </ion-col>
-</ion-row>
-<ion-row *ngFor="let row of paymentHistoryreponseArray,let i=index">
-  <ion-col size="3">
-    {{row.bidamount}}
-    </ion-col>
-    <ion-col size="3">
-     {{row.interestamount}}
-    </ion-col>
-    <ion-col size="3">
-     {{row.paidamount}}
-    </ion-col>
-    <ion-col size-sm="3">
-      {{row.paiddate|date: 'yyyy-MM-dd'}}
-    </ion-col>
-</ion-row> -->
+     <ion-header>
+      <ion-title>{{item.groupName}}</ion-title>
+    </ion-header>
+    <ion-content>
+      {{item.firstname}}
+    </ion-content> 
+
+    <ion-card-content>
+      <ion-card-title>
+          <ion-icon name="contact"></ion-icon>  {{item.groupName}}     
+      </ion-card-title>
+  </ion-card-content>
+
+
+  </ion-card> <!-->
+
+    <ion-card *ngFor="let item of memberchitdetailsArr" (click)="getPaymentDetailsByGrpMember(item)" color="primary">
+      <ion-card-header>
+        <ion-card-title>{{item.groupName}}</ion-card-title>
+      </ion-card-header>
+      <!-- <ion-card-content>
+        Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
+      </ion-card-content> -->
+    </ion-card>
 
 </ion-content>
 

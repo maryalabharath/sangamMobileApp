@@ -43,6 +43,10 @@ const routes: Routes = [
     path: 'anjumandetails',
     loadChildren: () => import('./anjumandetails/anjumandetails.module').then( m => m.AnjumandetailsPageModule)
   },
+  {
+    path: 'chitpaymentdetails',
+    loadChildren: () => import('./chitpaymentdetails/chitpaymentdetails.module').then( m => m.ChitpaymentdetailsPageModule)
+  },
 ];
 
 @NgModule({

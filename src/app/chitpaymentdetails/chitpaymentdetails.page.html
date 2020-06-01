@@ -1,0 +1,81 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+   
+        <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+    <!-- <ion-buttons slot="start" >
+      <ion-menu-button>
+      </ion-menu-button>
+    </ion-buttons> -->
+    <ion-title>Chit Payment Details</ion-title>
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content padding>
+  <ion-grid >
+    <ion-row class="row header">
+      <ion-col class="col">
+        <div>
+         <b>BidAmt</b> 
+        </div>
+      </ion-col>
+      <ion-col class="col">
+        <div>
+          <b>Interest</b>
+        </div>
+      </ion-col>
+      <ion-col class="col">
+        <div>
+         <b>Amount</b> 
+        </div>
+      </ion-col>
+      <ion-col class="col" >
+        <div>
+         <b>PaidDate</b> 
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let row of paymentHistoryreponseArray,let i=index" class="row">
+      <ion-col  class="col">
+        <div>
+          {{row.bidamount}}
+        </div>
+      </ion-col>
+      <ion-col class="col">
+        <div>
+          {{row.interestamount}}
+        </div>
+      </ion-col>
+      <ion-col class="col">
+        <div>
+          {{row.paidamount}}
+        </div>
+      </ion-col>
+      <ion-col class="col" >
+        <div>
+          {{row.paiddate|date: 'yy-MM-dd'}}
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="row">
+      <ion-col class="col">
+        <b> Total:</b>
+      </ion-col>
+      <ion-col class="col">
+           <b>{{TotalInterest}}</b> 
+      </ion-col>
+
+      <ion-col class="col">
+       <b>{{TotalPayment}}</b>  
+  </ion-col>
+
+  <ion-col class="col">
+    
+</ion-col>
+    </ion-row>
+  </ion-grid>
+  
+</ion-content>

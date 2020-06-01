@@ -4,6 +4,8 @@ import { UserMobileReg } from '../objects/usermobilereg';
 import { ChitdetailsService } from '../services/chitdetails.service';
 import { MemberPaymentDetails } from '../objects/memberpaymentdetails';
 import { PaymentHistory } from '../objects/paymenthistory';
+import { HelperService } from '../services/helper.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -19,7 +21,7 @@ export class ChitdetailsPage implements OnInit {
   public paymenthistory:PaymentHistory= {} as PaymentHistory;
   public paymentHistoryreponseArray:PaymentHistory[]=[];
 
-  constructor(private storage:Storage,private chitdetails:ChitdetailsService) { }
+  constructor(private storage:Storage,private chitdetails:ChitdetailsService,private helperService:HelperService,private routes:Router) { }
 
   ngOnInit() {
     this.storage.get('userdetails').then((val) => {
@@ -38,8 +40,6 @@ export class ChitdetailsPage implements OnInit {
     this.chitdetails.getMemberPaymentDetails(firstname).subscribe(data => {
     this.memberchitdetailsArr=data;
     console.log('MemberDetails',this.memberchitdetailsArr);
-    //this.dtTrigger.next();
-    // this.rerender();
     },
     );
     }
@@ -51,16 +51,29 @@ export class ChitdetailsPage implements OnInit {
     
   }
 
-  getPaymentDetailsByGrpMember()
- {
-   this.paymenthistory.chitnumber=this.selectedgroup.chitNumber;
-   this.paymenthistory.membernumber=this.selectedgroup.membernumber;
+//   getPaymentDetailsByGrpMember()
+//  {
+//    this.paymenthistory.chitnumber=this.selectedgroup.chitNumber;
+//    this.paymenthistory.membernumber=this.selectedgroup.membernumber;
+//    this.chitdetails.getPaymentDetailsByGrpandmember(this.paymenthistory).subscribe(data =>{
+//      this.paymentHistoryreponseArray=data;
+//      console.log('PaymentDetails',this.paymentHistoryreponseArray)
+//    })
+
+ //}
+   getPaymentDetailsByGrpMember(memberpaymentdetails:MemberPaymentDetails)
+  {
+   this.paymenthistory.chitnumber=memberpaymentdetails.chitNumber;
+   this.paymenthistory.membernumber=memberpaymentdetails.membernumber;
    this.chitdetails.getPaymentDetailsByGrpandmember(this.paymenthistory).subscribe(data =>{
      this.paymentHistoryreponseArray=data;
      console.log('PaymentDetails',this.paymentHistoryreponseArray)
+     this.helperService.myParam = {locs:this.paymentHistoryreponseArray};
+     this.routes.navigateByUrl('chitpaymentdetails');
    })
 
- }
+}
+
 
  public optionsFn(): void { //here item is an object 
   console.log(this.selectedgroup);

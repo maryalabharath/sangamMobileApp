@@ -23,12 +23,12 @@ export class MenuPage implements OnInit {
         icon:'home'
       },
       {
-        title:'ChitDetails',
+        title:'Chit Details',
         url:'/menu/chitdetails',
         icon:'home'
       },
       {
-        title:'AnjumanDetails',
+        title:'Anjuman Details',
         url:'/menu/anjumandetails',
         icon:'home'
       }
